@@ -3,8 +3,6 @@
 # Environment and local config
 .env
 .env.*
-!.env.example
-!.env.sample
 *.local
 
 # Secrets and credential material
@@ -36,6 +34,9 @@ secrets.*
 audit_log.json
 tmp/
 temp/
+memory.md
+status.md
+STATUS.md
 
 # Dependency directories
 node_modules/
