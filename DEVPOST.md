@@ -20,7 +20,7 @@ Concurrency is plain Python threading — five named threads, one per agent. We 
 
 Each agent runs a small explicit state machine: claim a patient → reserve a slot → call them → interpret the reply → book or release. We started with LangGraph and ripped it out after about an hour. With five states it just wasn't earning its keep.
 
-Patient replies during the demo come from a JSON fixture so the run is deterministic, except for one patient (P12) who's flagged as `manual` — we type that reply live to show the human-in-the-loop path is real.
+Patient replies during the demo come from a JSON fixture so the run is deterministic, except for one patient (P07) who's flagged as `manual` — we type that reply live to show the human-in-the-loop path is real.
 
 ## Challenges
 

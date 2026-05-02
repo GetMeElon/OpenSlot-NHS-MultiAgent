@@ -1,5 +1,5 @@
 {
-  "manual": ["P12"],
+  "manual": ["P07"],
   "replies": {
     "P01:S1": "YES",
     "P02:S2": "YES",
@@ -9,7 +9,6 @@
     "P04:S4": "YES",
     "P05:S5": "YES",
     "P06:S3": "wednesday",
-    "P07:S3": "wednesday",
     "P08:S3": "NO",
     "P11:S3": "wednesday",
     "P14:S3": "NO",
@@ -18,7 +17,6 @@
     "P18:S3": "NO",
     "P20:S3": "NO",
     "P06:S6": "YES",
-    "P07:S7": "tuesday",
     "P08:S7": "NO",
     "P09:S7": "NO",
     "P10:S7": "NO",

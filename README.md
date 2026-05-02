@@ -19,7 +19,7 @@ Each agent owns one primary slot and races concurrently to fill it from a shared
 - **`voice.py`** — ElevenLabs synth, serialized via `threading.Semaphore(1)` so concurrent agents don't talk over each other on the demo machine. Falls back to console output on any error.
 - **`runner.py`** — Spawns 5 named threads, joins, prints final summary.
 - **`seed.py`** — Idempotent reset: drops `nhs_pilot`, recreates 10 slots + 20 patients with priorities and unavailability constraints.
-- **`fixtures/replies.json`** — Pre-scripted patient replies for deterministic demo runs. One patient (`P12`) is `manual` — a live human types that reply during the demo to show the human-in-the-loop path.
+- **`fixtures/replies.json`** — Pre-scripted patient replies for deterministic demo runs. One patient (`P07`) is `manual` — a live human types that reply during the demo to show the human-in-the-loop path.
 
 ## Collections
 
@@ -44,7 +44,7 @@ python3 seed.py        # reset + seed
 python3 runner.py      # run 5 agents concurrently
 ```
 
-When prompted `Manual reply for P12:`, type `YES` and press Enter — that's the live human-in-the-loop step.
+When prompted `Manual reply for P07:`, type `YES` and press Enter — that's the live human-in-the-loop step.
 
 ## Demo outcome (deterministic)
 
@@ -61,7 +61,7 @@ The follow-up patients gave us a new unavailability token (e.g., "monday") via t
 
 - **Explicit FSM over LangGraph.** Five states; an agent loop is more debuggable than a graph DSL at this scale.
 - **MongoDB atomic ops over Redis locks.** `findOneAndUpdate` with filter+update in one round-trip replaces SELECT…FOR UPDATE plus row-locking. TTL indexes are the safety net.
-- **Pre-scripted replies for the demo.** In production, replies arrive via SMS/DTMF callback. For a 3-minute demo, `fixtures/replies.json` makes the run deterministic; `P12` is manual to demonstrate the human path.
+- **Pre-scripted replies for the demo.** In production, replies arrive via SMS/DTMF callback. For a 3-minute demo, `fixtures/replies.json` makes the run deterministic; `P07` is manual to demonstrate the human path.
 - **No AWS dependency.** Voice synth is ElevenLabs direct; no SNS, no Twilio.
 
 ## Repository

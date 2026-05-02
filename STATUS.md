@@ -66,7 +66,7 @@ Status legend: pending / in progress / merged / blocked / abandoned
 ### fixtures/replies.json shape
 
 ```json
-{ "manual": ["P12"], "replies": { "P03:S1": "YES", "P07:S2": "NO", ... } }
+{ "manual": ["P07"], "replies": { "P03:S1": "YES", "P08:S3": "NO", ... } }
 ```
 
 ### Environment variables (`.env.example` after Sprint A)
@@ -89,7 +89,7 @@ _(One line per architectural decision made during the build. Helps the next agen
 
 - 2026-05-02 14:55 - **Drop LangGraph, Voyage AI, Next.js dashboard.** Explicit FSM + priority+unavailability filter + Atlas Compass cover the demo with less risk in the time budget.
 - 2026-05-02 14:55 - **Concurrency model:** 5 threads, `threading.Semaphore(1)` on ElevenLabs playback, atomic `find_one_and_update` for all locks, TTL index as safety net only.
-- 2026-05-02 14:55 - **Patient replies are pre-scripted** in `fixtures/replies.json`; one patient (`P12`) is `manual` so the live human types that reply during the demo.
+- 2026-05-02 14:55 - **Patient replies are pre-scripted** in `fixtures/replies.json`; one patient (`P07`) is `manual` so the live human types that reply during the demo.
 
 ---
 
@@ -105,7 +105,7 @@ _(Each agent appends one section here as their final commit step.)_
 - Built: `.gitignore` excludes local env files, virtualenv/cache output, generated audio, audit logs, and `.DS_Store`.
 - Built: `db.py` exposes the frozen MongoDB data-layer helpers, TTL indexes, lock timing helpers, and atomic `find_one_and_update` primitives.
 - Built: `seed.py` idempotently drops and recreates slots, patients, attempts, validates primary eligibility, and prints markdown tables.
-- Built: `fixtures/replies.json` provides deterministic scripted replies with `P12` reserved for manual input.
+- Built: `fixtures/replies.json` provides deterministic scripted replies with `P07` reserved for manual input.
 - Decisions: `record_attempt()` writes `channel: "voice"` because the frozen signature does not accept a channel argument.
 - Decisions: `get_db()` falls back to `mongodb://localhost:27017` when `MONGO_URI` is unset so local demos can work without editing code.
 - Gotchas for Sprint B: `MONGO_URI` was not set in this shell, and no local MongoDB service was listening on `localhost:27017`; database-backed acceptance commands need a reachable Atlas/local URI.

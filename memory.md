@@ -17,13 +17,13 @@ Single-source-of-truth for non-code context. Code agents read this + STATUS.md +
 - Python, pymongo, ElevenLabs (voice), python-dotenv.
 - Dropped: LangGraph, Voyage AI, Next.js dashboard. Explicit FSM + priority+unavailability filter + Atlas Compass cover the demo with less risk.
 - Concurrency: 5 threads, `threading.Semaphore(1)` on ElevenLabs playback, atomic `find_one_and_update` for all locks, TTL index as safety net only.
-- Patient replies are pre-scripted in `fixtures/replies.json`; `P12` is `manual` so a live human types that reply during the demo.
+- Patient replies are pre-scripted in `fixtures/replies.json`; `P07` is `manual` so a live human types that reply during the demo.
 
 ## Demo narrative (3 min)
 1. `python seed.py` — show MongoDB collections in Atlas Compass.
 2. `python runner.py` — 5 agents concurrently claim patients, call (ElevenLabs voice), book slots.
 3. Show the audit log (`attempts` collection) and the unfilled-primary→pool reallocation.
-4. Manual reply for P12 demonstrates the human-in-the-loop path.
+4. Manual reply for P07 demonstrates the human-in-the-loop path.
 
 ## Repo layout (DO NOT reorganize before submission)
 - Root: `/Users/dan/Public/*AI/Codex/MongoDB hackathon/`
