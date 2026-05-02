@@ -123,3 +123,10 @@ _(Each agent appends one section here as their final commit step.)_
 - Files touched: `agent.py`, `voice.py`, `STATUS.md`.
 
 <!-- Sprint C appends below this line -->
+
+## Sprint C - completion log (2026-05-02 16:15)
+- Built: `runner.py` calls `db.ensure_indexes()` at startup, launches five threads for `agent.run_agent(1..5)`, joins every worker, and prints the final demo summary counts.
+- Built: runner captures per-thread exceptions, prints their tracebacks after the summary, and exits non-zero if any agent failed.
+- Decisions: summary counts read directly from MongoDB via `get_db()` after all workers finish: booked primary slots, booked pool slots, patients in `follow_up`, and primary slots not booked.
+- Gotchas for integration: `agent.py` is expected to provide the frozen `run_agent(agent_id: int) -> None` contract before running `python runner.py`.
+- Files touched: `runner.py`, `STATUS.md`.
