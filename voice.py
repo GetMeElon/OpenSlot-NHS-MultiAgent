@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import os
+import subprocess
+import tempfile
 import threading
 
 from dotenv import load_dotenv
 from elevenlabs import ElevenLabs
-from elevenlabs.play import play
 
 
 _speech_gate = threading.Semaphore(1)
@@ -29,6 +30,11 @@ def speak(text: str) -> None:
                 model_id="eleven_multilingual_v2",
                 output_format="mp3_44100_128",
             )
-            play(audio)
-        except Exception:
-            print(f"[voice] FALLBACK: {text}")
+            audio_bytes = b"".join(audio) if hasattr(audio, "__iter__") else audio
+
+            with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as f:
+                f.write(audio_bytes)
+                path = f.name
+            subprocess.run(["afplay", path], check=True)
+        except Exception as e:
+            print(f"[voice] FALLBACK ({type(e).__name__}: {e}): {text}")
