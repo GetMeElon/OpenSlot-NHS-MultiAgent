@@ -8,9 +8,9 @@ The overseer (the planning chat) updates the top-of-file checklist after each me
 
 ## Submission
 
-- **Deadline:** 16:35 BST 2026-05-02
-- **Plan:** [Plan/v1-v2-sprint-plan.md](Plan/v1-v2-sprint-plan.md)
-- **Demo entrypoint (target):** `python seed.py && python runner.py`
+- **Deadline:** 17:00 BST 2026-05-02 (hard-stop 16:40 BST)
+- **Plan:** see `memory.md` + this file
+- **Demo entrypoint (target):** `python3 seed.py && python3 runner.py`  (system has no `python` alias — only `python3`)
 
 ---
 
@@ -18,9 +18,9 @@ The overseer (the planning chat) updates the top-of-file checklist after each me
 
 | Sprint | Status | Owner | Branch | Merged at | Notes |
 |--------|--------|-------|--------|-----------|-------|
-| A - Seed + atomic db primitives | not started | Sonnet 4.6 | `agent-a/seed` | - | Blocks B and C |
-| B - Per-agent state machine + voice | blocked on A | GPT-5-codex | `agent-b/loop` | - | Blocks C |
-| C - Concurrent runner + audio gate | blocked on B | GPT-5-codex | `agent-c/runner` | - | Final integration |
+| A - Seed + atomic db primitives | merged | Sonnet 4.6 | `agent-a/seed` | b107ecc | - |
+| B - Per-agent state machine + voice | merged | GPT-5-codex | `agent-b/loop` | 3cead62 | python3-only env |
+| C - Concurrent runner + audio gate | committed, awaiting merge | GPT-5-codex | `agent-c/runner` | - | built in parallel against frozen agent.py contract |
 | (Dry run + final commit) | - | overseer | main | - | 16:20-16:25 |
 | (Push + Devpost) | - | overseer | main | - | 16:25-16:35 |
 
