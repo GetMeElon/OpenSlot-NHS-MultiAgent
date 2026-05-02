@@ -1,0 +1,4 @@
+pymongo
+python-dotenv
+elevenlabs
+boto3

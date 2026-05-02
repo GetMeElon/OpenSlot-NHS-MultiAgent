@@ -1,0 +1,44 @@
+.DS_Store
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+!.env.sample
+*.local
+
+# Secrets and credential material
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.csr
+*.der
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.tfvars
+*.tfvars.json
+secrets.*
+
+# Editor and tooling
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and runtime state
+*.log
+*.mp3
+audit_log.json
+tmp/
+temp/
+
+# Dependency directories
+node_modules/
+.venv/
+venv/
+__pycache__/
