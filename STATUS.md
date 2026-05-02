@@ -114,4 +114,12 @@ _(Each agent appends one section here as their final commit step.)_
 
 <!-- Sprint B appends below this line -->
 
+## Sprint B - completion log (2026-05-02 16:22 BST)
+- Built: `voice.py` exposes `speak(text)` with a module-level `threading.Semaphore(1)`, ElevenLabs env lookup, local playback, and non-raising console fallback.
+- Built: `agent.py` exposes `run_agent(agent_id)` with the primary-slot loop, fixture/manual replies, attempt recording, booking/release/follow-up handling, and one pool-slot pass.
+- Decisions: primary slot lookup uses the prompt-required `db.get_db().slots.find_one(...)`; all state mutations use the frozen `db.py` helper surface.
+- Decisions: manual replies normalize only `YES`/`NO`; unavailability tokens preserve typed casing for `append_unavailability`.
+- Gotchas for Sprint C: this shell has `python3` but no `python`, so `python3 -c "import agent, voice; print('ok')"` passes while the literal `python ...` command cannot run here.
+- Files touched: `agent.py`, `voice.py`, `STATUS.md`.
+
 <!-- Sprint C appends below this line -->
