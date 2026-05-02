@@ -1,0 +1,6 @@
+.env
+venv/
+__pycache__/
+*.mp3
+audit_log.json
+.DS_Store
